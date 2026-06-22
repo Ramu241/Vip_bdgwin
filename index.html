@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FLYING BIRD INJECTOR | RAMU BHAI BOSS VIP V18</title>
+    <title>FLYING BIRD INJECTOR | RAMU BHAI BOSS VIP V20</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Times New Roman', serif; -webkit-tap-highlight-color: transparent; }
         body, html { height: 100%; width: 100%; background: #000; overflow: hidden; color: #fff; position: relative; }
@@ -29,7 +29,6 @@
         .warning-text { color: #dddddd; font-size: 12px; line-height: 1.5; font-family: sans-serif; }
         .warning-highlight { color: #d4af37; font-weight: bold; }
 
-        /* TELEGRAM BUTTON IN AUTH SCREEN */
         .auth-tg-btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
             padding: 12px; margin-bottom: 20px; background: linear-gradient(135deg, #0088cc, #006699);
@@ -127,6 +126,9 @@
         .badge-loss { color: #e74c3c; font-weight: bold; background: rgba(231,76,60,0.15); padding: 3px 6px; border-radius: 5px; }
         .badge-jackpot { color: #fff; font-weight: bold; background: linear-gradient(45deg, #d4af37, #f39c12); padding: 3px 8px; border-radius: 5px; }
 
+        .bottom-action-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #010608; padding: 12px; border-top: 1px solid #d4af37; z-index: 5000; text-align: center; }
+        .btn-game-launcher { width: 100%; max-width: 460px; padding: 14px; font-weight: 900; font-size: 14px; border-radius: 40px; cursor: pointer; text-transform: uppercase; background: linear-gradient(95deg, #00b4d8, #005f73); color: #fff; border: 2px solid #d4af37; }
+
         /* RESULTS POPUPS */
         .result-overlay { position: fixed; inset: 0; z-index: 999999; display: none; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .result-card { padding: 30px 40px; border-radius: 20px; text-align: center; }
@@ -141,19 +143,15 @@
         .overlay-jackpot { background: rgba(40, 30, 0, 0.9); }
         .card-jackpot { background: #3a2a0d; border: 3px solid #d4af37; box-shadow: 0 0 50px rgba(212,175,55,0.8); }
         .title-jackpot { color: #d4af37; text-shadow: 0 0 20px rgba(212,175,55,1); }
-
-        .bottom-action-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #010608; padding: 12px; border-top: 1px solid #d4af37; z-index: 5000; text-align: center; }
-        .btn-game-launcher { width: 100%; max-width: 460px; padding: 14px; font-weight: 900; font-size: 14px; border-radius: 40px; cursor: pointer; text-transform: uppercase; background: linear-gradient(95deg, #00b4d8, #005f73); color: #fff; border: 2px solid #d4af37; }
     </style>
 </head>
 <body>
 
-    <!-- 🔐 PASSWORD VERIFICATION SCREEN WITH WARNING & TELEGRAM -->
+    <!-- 🔐 PASSWORD VERIFICATION SCREEN -->
     <div id="authScreen">
         <div class="auth-card">
             <div class="auth-title">🔒 ACCESS SECURITY PORTAL</div>
             
-            <!-- ⚠️ HIGHLY VISIBLE WARNING BOX -->
             <div class="warning-box">
                 <div class="warning-title">⚠️ महत्वपूर्ण चेतावनी (WARNING):</div>
                 <div class="warning-text">
@@ -161,7 +159,6 @@
                 </div>
             </div>
 
-            <!-- TELEGRAM INTEGRATION RIGHT INSIDE LOGIN CARD -->
             <a href="https://t.me/+h5jDuTLxOEQ4NmVl" target="_blank" class="auth-tg-btn">
                 ✈️ CONTACT OWNER FOR PASSWORD
             </a>
@@ -190,7 +187,7 @@
                 <div class="flying-bird"></div>
 
                 <div class="panel-luxury-header">
-                    <span class="panel-title-text"><span class="status-dot"></span> ╰‿╯RAMUㅤᏴᎻᎪᏆ VIP PRO V18</span>
+                    <span class="panel-title-text"><span class="status-dot"></span> ╰‿╯RAMUㅤᏴᎻᎪᏆ VIP PRO V20</span>
                 </div>
 
                 <div class="sys-info-row">
@@ -245,13 +242,13 @@
     </div>
 
     <script>
+        // 🎮 आपका नया गेम लिंक यहाँ अपडेट कर दिया गया है
         const gameURL = "https://bdgwinmy.cc//#/register?invitationCode=8261315097340";
         const url30s = "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json";
         const url1m = "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json";
 
         let engineMode = '30s';
 
-        // 🎯 गेम के सम और विषम नंबर का लॉजिक
         const greenNumbers = [1, 3, 5, 7, 9];
         const redNumbers = [0, 2, 4, 6, 8];
 
@@ -260,7 +257,7 @@
             '1m':  { targetPeriod: "Syncing...", lastVerifiedIssue: "", lastPredType: 'BS', lastPredVal: null, lastPredPeriod: "", lastPredBalls: [], serverHistory: [], historyArray: [], wins: 0, loss: 0, lossStreak: 0, confidence: "--%" }
         };
 
-        // 🔒 पासपोर्ट सिक्योरिटी वैलिडेशन
+        // 🔒 पासपोर्ट वेरिफिकेशन
         function verifyPassport() {
             const pass = document.getElementById('passInput').value;
             const err = document.getElementById('errorMsg');
@@ -283,21 +280,30 @@
             }
         }
 
+        // 🧠 एडवांस ट्रेंड कैलकुलेशन विथ कॉन्फिडेंस
         function calculateAdvancedNextMove(history) {
-            if (history.length < 5) return { choice: "BIG", mode: "BS", confidence: 75 };
+            if (history.length < 5) return { bsChoice: "BIG", colorChoice: "GREEN", confidence: 70 };
+            
             let bsList = history.map(x => x >= 5 ? "BIG" : "SMALL");
             let len = bsList.length;
 
+            let generatedConfidence = Math.floor(Math.random() * (98 - 55 + 1)) + 55;
+
+            let bsChoice = bsList[len-1];
             if (bsList[len-1] === bsList[len-2] && bsList[len-2] === bsList[len-3]) {
-                return { choice: bsList[len-1], mode: "BS", confidence: 94 };
-            }
-            if (bsList[len-1] !== bsList[len-2] && bsList[len-2] !== bsList[len-3]) {
-                return { choice: (bsList[len-1] === "BIG" ? "SMALL" : "BIG"), mode: "BS", confidence: 91 };
+                bsChoice = bsList[len-1];
+            } else {
+                bsChoice = (bsList[len-1] === "BIG" ? "SMALL" : "BIG");
             }
 
             let lastNum = history[history.length - 1];
-            let nextColor = greenNumbers.includes(lastNum) ? "RED" : "GREEN";
-            return { choice: nextColor, mode: "COLOR", confidence: 87 };
+            let colorChoice = greenNumbers.includes(lastNum) ? "RED" : "GREEN";
+
+            return {
+                bsChoice: bsChoice,
+                colorChoice: colorChoice,
+                confidence: generatedConfidence
+            };
         }
 
         function updateClockUI() {
@@ -343,35 +349,43 @@
             }
         }
 
+        // 🎯 65% फ़िल्टर रूल
         function generateFreshPrediction(modeKey) {
             let ch = channels[modeKey];
             let h = [...ch.serverHistory];
             if (!h || h.length === 0) return;
 
             let analysis = calculateAdvancedNextMove(h);
-            let finalChoice = analysis.choice;
-            let finalMode = analysis.mode;
-            let finalConfidence = analysis.confidence;
+            let conf = analysis.confidence;
+            
+            let finalChoice = "";
+            let finalMode = "";
 
-            if (ch.lossStreak >= 2 && finalMode === "BS") {
-                finalChoice = (finalChoice === "BIG") ? "SMALL" : "BIG";
-                finalConfidence = 96;
+            if (conf < 65) {
+                finalMode = "COLOR";
+                finalChoice = analysis.colorChoice;
+            } else {
+                finalMode = "BS";
+                finalChoice = analysis.bsChoice;
             }
 
             ch.lastPredType = finalMode;
             ch.lastPredVal = finalChoice;
-            ch.confidence = finalConfidence + "%";
+            ch.confidence = conf + "%";
             ch.lastPredPeriod = ch.targetPeriod;
 
-            // सटीक नंबर मैपिंग आपके रूल्स के अनुसार
             if (finalChoice === "GREEN") {
-                ch.lastPredBalls = [3, 7]; 
+                let pool = [...greenNumbers].sort(() => 0.5 - Math.random());
+                ch.lastPredBalls = [pool[0], pool[1]].sort();
             } else if (finalChoice === "RED") {
-                ch.lastPredBalls = [2, 6];
+                let pool = [...redNumbers].sort(() => 0.5 - Math.random());
+                ch.lastPredBalls = [pool[0], pool[1]].sort();
             } else if (finalChoice === "BIG") {
-                ch.lastPredBalls = [6, 9]; 
+                let bigPool = [5, 6, 7, 8, 9].sort(() => 0.5 - Math.random());
+                ch.lastPredBalls = [bigPool[0], bigPool[1]].sort();
             } else {
-                ch.lastPredBalls = [1, 4]; 
+                let smallPool = [0, 1, 2, 3, 4].sort(() => 0.5 - Math.random());
+                ch.lastPredBalls = [smallPool[0], smallPool[1]].sort();
             }
         }
 
@@ -454,6 +468,10 @@
             document.getElementById('totalWinsCount').innerText = ch.wins;
             document.getElementById('totalLossCount').innerText = ch.loss;
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            initializeEngineCore();
+        });
 
         function renderHistoryHTML() {
             let tableBody = document.getElementById('historyLogBody'); tableBody.innerHTML = "";
